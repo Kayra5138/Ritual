@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemChanger : MonoBehaviour
 {
+    [SerializeField] GameObject candleLight;
     [SerializeField] List<Sprite> sprites;
     public bool canFire;
     public bool isLit;
@@ -32,6 +33,7 @@ public class ItemChanger : MonoBehaviour
             {
                 Debug.Log("Yandı");
                 isLit = true;
+                candleLight.SetActive(true);
             }
         }
 
