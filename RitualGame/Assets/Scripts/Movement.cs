@@ -8,9 +8,11 @@ public class Movement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] List<Sprite> sprites;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -20,6 +22,18 @@ public class Movement : MonoBehaviour
     {
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
+
+        animator.SetFloat("speedHorizontal",Mathf.Abs(xAxis));
+        animator.SetFloat("speedVertical", yAxis);
+        if(xAxis < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+
 
         if (yAxis < 0)
         {
@@ -41,6 +55,8 @@ public class Movement : MonoBehaviour
         transform.Translate(new Vector2(xAxis, yAxis) * Time.fixedDeltaTime * moveSpeed);
         //rb.AddRelativeForce(new Vector2(xAxis, yAxis)*Time.fixedDeltaTime*moveSpeed);
     }
+
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
