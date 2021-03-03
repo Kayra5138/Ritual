@@ -21,4 +21,9 @@ public class Movement : MonoBehaviour
         transform.Translate(new Vector2(xAxis, yAxis)* Time.fixedDeltaTime * moveSpeed);
         //rb.AddRelativeForce(new Vector2(xAxis, yAxis)*Time.fixedDeltaTime*moveSpeed);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log(other.gameObject.tag);
+    }
 }
