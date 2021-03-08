@@ -17,7 +17,7 @@ public class health : MonoBehaviour
     {
         if(Health <=0)
         {
-            Destroy(gameObject,3.5f);
+            Destroy(gameObject);
             if(!once_check)
             {
                 Instantiate(blood, gameObject.transform.position, Quaternion.identity);
@@ -29,7 +29,7 @@ public class health : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("knife"))
         {
-            Health -= 2f;
+            Health -= 0.1f;
         }
     }
 }
